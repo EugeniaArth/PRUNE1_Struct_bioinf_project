@@ -1,3 +1,4 @@
+
 # PRUNE1 c.521-2A>G Variant Analysis
 
 **Project:** Structural Bioinformatics coursework  
@@ -170,3 +171,6 @@ All scripts are generic and reproducible via CLI arguments:
 - `hw5/PRUNE1_GSK3B_report.md` → PRUNE1 interaction analysis
 - `Lecture 2 Supplementary/Code template/sbtools.py` → structural biology toolkit
 - `Lecture 2 Supplementary/Code template/hw2_report.py` → adapted as `Project/scripts/structure_analysis.py`
+=======
+# PRUNE1_Struct_bioinf_project
+
