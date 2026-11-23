@@ -1,0 +1,40 @@
+{
+  "accessed": "2026-11-23",
+  "gene": "PRUNE1",
+  "molecular_consequences": [
+    {
+      "transcript": "\u0394exon5",
+      "nmd_verdict": "NMD_not_applicable",
+      "molecular_consequence": "truncated_protein",
+      "detail": "in-frame deletion of 53 codons",
+      "protein_made": true,
+      "mechanism": "hypomorph_or_dominant_negative"
+    },
+    {
+      "transcript": "\u0394exon4+5",
+      "nmd_verdict": "NMD_competent",
+      "molecular_consequence": "null",
+      "detail": "frameshift of 2 nt, premature stop likely",
+      "protein_made": false,
+      "mechanism": "haploinsufficiency_contributor"
+    }
+  ],
+  "gnomad_constraint": {
+    "gene_id": "ENSG00000143363",
+    "symbol": "PRUNE1",
+    "exp_lof": 15.6656519112,
+    "obs_lof": 6,
+    "pLI": 0.0107617657791834,
+    "lof_z": 2.41905979764539,
+    "source": "gnomAD v2.1 exac_constraint (GRCh37)"
+  },
+  "constraint_interpretation": {
+    "pLI": 0.0107617657791834,
+    "haploinsufficiency_evidence": "weak",
+    "message": "pLI = 0.011 \u2014 tolerant to LOF; haploinsufficiency unlikely for this gene"
+  },
+  "clingen": null,
+  "clinvar": {
+    "clinvar_variant_count": 173
+  }
+}

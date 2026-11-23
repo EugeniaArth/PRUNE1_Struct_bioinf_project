@@ -78,20 +78,56 @@ def fetch_domains(uniprot):
 
 
 # ────────────────────────────────────────────── Load AlphaFold confidence
-def load_plddt(path):
-    """Load AlphaFold confidence JSON and return {residue: score} dict."""
-    with open(path) as f:
-        d = json.load(f)
-    # Could be list of dicts or parallel arrays
+def fetch_alphafold_plddt(uniprot):
+    """Fetch AlphaFold confidence JSON from the EBI API.
+
+    Returns {residue: score} dict, or None if unavailable.
+    """
+    url = f"https://alphafold.ebi.ac.uk/api/prediction/{uniprot}"
+    try:
+        meta = S.get(url, timeout=90).json()
+        if meta and len(meta) > 0:
+            conf_url = meta[0].get("confidenceUrl")
+            if conf_url:
+                r = S.get(conf_url, timeout=90)
+                if r.status_code == 200:
+                    return parse_plddt(r.json())
+    except Exception:
+        pass
+    # Fallback: try direct file URL
+    direct = f"https://alphafold.ebi.ac.uk/files/AF-{uniprot}-F1-confidence_v6.json"
+    try:
+        r = S.get(direct, timeout=90)
+        if r.status_code == 200:
+            return parse_plddt(r.json())
+    except Exception:
+        pass
+    return None
+
+
+def parse_plddt(d):
+    """Parse pLDDT from AlphaFold JSON into {residue: score}."""
     if isinstance(d, list) and len(d) > 0 and "residueNumber" in d[0]:
         return {e["residueNumber"]: e["confidenceScore"] for e in d}
-    # Parallel arrays format
     if "residueNumber" in d and "confidenceScore" in d:
         return dict(zip(d["residueNumber"], d["confidenceScore"]))
-    # Try 'plddt' key
     if "plddt" in d:
         return {i + 1: v for i, v in enumerate(d["plddt"])}
-    print("  ! Warning: could not parse pLDDT format")
+    return None
+
+
+def load_plddt(path, uniprot=None):
+    """Load AlphaFold confidence JSON from local path or fetch from API."""
+    if path and os.path.exists(path):
+        with open(path) as f:
+            d = json.load(f)
+        result = parse_plddt(d)
+        if result:
+            return result
+    if uniprot:
+        result = fetch_alphafold_plddt(uniprot)
+        if result:
+            return result
     return {}
 
 
@@ -235,7 +271,7 @@ def main():
     parser.add_argument("--classify-json", default="variant_c.521_2A_gt_G.json",
                         help="JSON output from classify_variant.py")
     parser.add_argument("--plddt-json", default=None,
-                        help="AlphaFold confidence JSON (optional)")
+                        help="AlphaFold confidence JSON (optional; fetched from API if not given)")
     parser.add_argument("--outdir", default=".")
     args = parser.parse_args()
 
@@ -288,7 +324,10 @@ def main():
     # 3. Load pLDDT
     plddt = {}
     if args.plddt_json and os.path.exists(args.plddt_json):
-        plddt = load_plddt(args.plddt_json)
+        plddt = load_plddt(args.plddt_json, uniprot=args.uniprot)
+    elif args.uniprot:
+        # Try fetching from AlphaFold API
+        plddt = load_plddt(None, uniprot=args.uniprot)
         print(f"== pLDDT confidence: {len(plddt)} residues loaded")
         if plddt:
             print("\t".join(["Residue", "pLDDT"]))

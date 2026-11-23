@@ -1,0 +1,125 @@
+{
+  "accessed": "2026-11-23",
+  "gene": "PRUNE1",
+  "transcript": "ENST00000271620",
+  "variant": "c.521-2A>G",
+  "transcript_geometry": {
+    "gene": "PRUNE1",
+    "transcript_id": "ENST00000271620",
+    "strand": 1,
+    "n_exons": 8,
+    "cdna_len": 3025,
+    "cds_len": 1362,
+    "cds_start": 185,
+    "cds_end": 1546,
+    "protein_len": 453,
+    "utr5_len": 184,
+    "utr3_len": 1479,
+    "last_junction_c": 933,
+    "nmd_boundary_c": 883,
+    "exons": [
+      {
+        "exon": 1,
+        "start_c": -183,
+        "end_c": 39,
+        "len_nt": 223
+      },
+      {
+        "exon": 2,
+        "start_c": 40,
+        "end_c": 132,
+        "len_nt": 93
+      },
+      {
+        "exon": 3,
+        "start_c": 133,
+        "end_c": 335,
+        "len_nt": 203
+      },
+      {
+        "exon": 4,
+        "start_c": 336,
+        "end_c": 520,
+        "len_nt": 185
+      },
+      {
+        "exon": 5,
+        "start_c": 521,
+        "end_c": 679,
+        "len_nt": 159
+      },
+      {
+        "exon": 6,
+        "start_c": 680,
+        "end_c": 774,
+        "len_nt": 95
+      },
+      {
+        "exon": 7,
+        "start_c": 775,
+        "end_c": 933,
+        "len_nt": 159
+      },
+      {
+        "exon": 8,
+        "start_c": 934,
+        "end_c": 2841,
+        "len_nt": 1908
+      }
+    ]
+  },
+  "splice_analysis": {
+    "hgvs_c": "c.521-2A>G",
+    "site_type": "acceptor",
+    "site_class": "canonical_splice_site",
+    "ref_pos_c": 521,
+    "intron_offset": 2,
+    "ref_base": "A",
+    "alt_base": "G",
+    "affected_exon": 5,
+    "affected_intron": 4,
+    "splicing_consequences": [
+      {
+        "type": "single_exon_skip",
+        "skipped_exon": 5,
+        "skipped_region_c": "c.521\u2013c.679",
+        "skipped_nt": 159,
+        "reading_frame_maintained": true,
+        "codons_removed": 53,
+        "description": "in-frame deletion of 53 codons",
+        "nmd": {
+          "applies": false,
+          "nmd_boundary_c": 883,
+          "last_junction_c": 933,
+          "verdict": "NMD_not_applicable",
+          "reason": "in-frame deletion; no premature stop created"
+        }
+      },
+      {
+        "type": "multi_exon_skip",
+        "skipped_exons": "4+5",
+        "skipped_region_c": "c.336\u2013c.679",
+        "skipped_nt": 344,
+        "reading_frame_maintained": false,
+        "description": "frameshift of 2 nt, premature stop likely",
+        "nmd": {
+          "applies": true,
+          "nmd_boundary_c": 883,
+          "last_junction_c": 933,
+          "verdict": "NMD_competent",
+          "reason": "frameshift at c.336 creates premature stop well before NMD boundary (c.883)"
+        }
+      }
+    ]
+  },
+  "coding_analysis": {
+    "hgvs_c": "c.521-2A>G",
+    "hgvs_p": null,
+    "variant_class": null,
+    "cds_position": 521,
+    "codon": 174,
+    "residue": 174,
+    "affected_exon": 5,
+    "nmd": null
+  }
+}

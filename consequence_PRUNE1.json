@@ -1,0 +1,23 @@
+{
+  "accessed": "2026-11-23",
+  "gene": "PRUNE1",
+  "molecular_consequences": [],
+  "gnomad_constraint": {
+    "gene_id": "ENSG00000143363",
+    "symbol": "PRUNE1",
+    "exp_lof": 15.6656519112,
+    "obs_lof": 6,
+    "pLI": 0.0107617657791834,
+    "lof_z": 2.41905979764539,
+    "source": "gnomAD v2.1 exac_constraint (GRCh37)"
+  },
+  "constraint_interpretation": {
+    "pLI": 0.0107617657791834,
+    "haploinsufficiency_evidence": "weak",
+    "message": "pLI = 0.011 \u2014 tolerant to LOF; haploinsufficiency unlikely for this gene"
+  },
+  "clingen": null,
+  "clinvar": {
+    "clinvar_variant_count": 173
+  }
+}

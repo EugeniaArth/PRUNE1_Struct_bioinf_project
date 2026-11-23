@@ -1,0 +1,55 @@
+{
+  "accessed": "2026-11-23",
+  "gene": "PRUNE1",
+  "uniprot": "Q86TP1",
+  "variant": "c.521-2A",
+  "domains": [
+    {
+      "accession": "IPR001667",
+      "name": "DHH domain",
+      "type": "domain",
+      "integrated": null,
+      "start": 20,
+      "end": 172,
+      "source": "InterPro"
+    },
+    {
+      "accession": "IPR004097",
+      "name": "DHHA2 domain",
+      "type": "domain",
+      "integrated": null,
+      "start": 215,
+      "end": 359,
+      "source": "InterPro"
+    },
+    {
+      "accession": "PF02833",
+      "name": "DHHA2 domain",
+      "type": "family",
+      "integrated": "IPR004097",
+      "start": 217,
+      "end": 358,
+      "source": "InterPro"
+    },
+    {
+      "accession": "PTHR12112",
+      "name": "Manganese-dependent Inorganic Pyrophosphatases",
+      "type": "family",
+      "integrated": null,
+      "start": 1,
+      "end": 359,
+      "source": "InterPro"
+    }
+  ],
+  "affected_regions": [
+    {
+      "consequence": "\u0394exon5",
+      "affected_type": "deleted_region",
+      "residue_start": 174,
+      "residue_end": 226,
+      "length_aa": 53,
+      "description": "deleted residues 174-226 (53 aa)"
+    }
+  ],
+  "protein_length": 453
+}
